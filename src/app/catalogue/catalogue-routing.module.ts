@@ -25,11 +25,12 @@ import { CategoryDeactivateGuardService } from "./category/category-deactivate-g
 import { LogisticServicePublishComponent } from './publish/logistic-service-publish.component';
 import { LogisticPublishDeactivateGuardService } from './logistic-publish-deactivate-guard.service';
 
+
 const routes: Routes = [
     { path: "categorysearch", component: CategorySearchComponent, canDeactivate: [CategoryDeactivateGuardService] },
     { path: "publish", component: ProductPublishComponent, canDeactivate: [PublishDeactivateGuardService] },
     { path: "publish-logistic", component: LogisticServicePublishComponent, canDeactivate: [LogisticPublishDeactivateGuardService] },
-    { path: "catalogue", component: CatalogueViewComponent }
+    { path: "catalogue", component: CatalogueViewComponent },
 ];
 
 @NgModule({

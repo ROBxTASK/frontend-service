@@ -1,0 +1,281 @@
+<!--
+ * Copyright 2020
+ * SRDC - Software Research & Development Consultancy; Ankara; Turkey
+   In collaboration with
+ * SRFG - Salzburg Research Forschungsgesellschaft mbH; Salzburg; Austria
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- return button -->
+<!------------------------------------------------------------------------------------------------------------>
+<br/>
+<div class="col-12 row">
+    <button class="btn btn-outline-dark fa fa-search operation-btn-left"
+            [disabled]="false" (click)="returnToSearch()">
+        <span [innerHTML]="'Return to Search' | translate"></span>
+    </button>
+</div>
+<br/>
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- type view -->
+<!------------------------------------------------------------------------------------------------------------>
+<div class="form-group col-12 row" id="type-view">
+
+    <div class="col-6 align-left">
+        <h3><span [innerHTML]="'Asset Type Data' | translate"></span></h3><br/>
+        <form id="type-form" #customPropertyForm="ngForm" class="col-12">
+
+            <!-- name -->
+            <text-input label="AssetType-Name" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="type.name" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- short ID -->
+            <text-input label="Abbreviation" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="type.shortID" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- semantic ID -->
+            <text-input label="E-Class Number" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="type.semanticID" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- type description -->
+            <text-input label="Description" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="type.description" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- certificate -->
+            <text-input label="Certificate" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="type.certificate" [rows]="1" [required]="true">
+            </text-input>
+
+            <options-input #dataTypeOption large="true"
+                           label="Properties" labelClass="col-6" valueClass="col-6"
+                           [presentationMode]="'edit'" [options]="propertyNames" [(selected)]="selectedPropertyStream"
+                           (selectedOptionChange)="handleSelectedPropertyChange($event)">
+            </options-input>
+        </form>
+    </div>
+
+    <div id="data-view" class="col-6 align-right">
+        <h3><span [innerHTML]="'[' + selectedPropertyStream + ']'"></span></h3><br/>
+
+        <!-- sample graph with sample datapoints -->
+        <figure class="css-chart" style="--widget-size: 200px;">
+            <ul class="line-chart">
+                <li style="--x: 40px; --y: 83.3333px;">
+                    <div class="data-point" data-value="25"></div>
+                    <div class="line-segment" style="--hypotenuse: 123.33333333333333; --angle:-71.07535558394876;"></div>
+                </li>
+                <li style="--x: 80px; --y: 200px;">
+                    <div class="data-point" data-value="60"></div>
+                    <div class="line-segment" style="--hypotenuse: 64.03124237432849; --angle:51.34019174590991;"></div>
+                </li>
+                <li style="--x: 120px; --y: 150px;">
+                    <div class="data-point" data-value="45"></div>
+                    <div class="line-segment" style="--hypotenuse: 43.333333333333336; --angle:-22.61986494804045;"></div>
+                </li>
+                <li style="--x: 160px; --y: 166.667px;">
+                    <div class="data-point" data-value="50"></div>
+                    <div class="line-segment" style="--hypotenuse: 52.068331172711055; --angle:39.805571092265225;"></div>
+                </li>
+                <li style="--x: 200px; --y: 133.333px;">
+                    <div class="data-point" data-value="40"></div>
+                    <div class="line-segment" style="--hypotenuse: 0; --angle:0;"></div>
+                </li>
+            </ul>
+        </figure>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- instance view -->
+<!------------------------------------------------------------------------------------------------------------>
+<div class="form-group col-12 row" id="instance-view">
+
+    <div class="col-6 align-left">
+        <h3><span [innerHTML]="'Asset Instance Data' | translate"></span></h3><br/>
+
+        <form id="instance-form" #customPropertyForm="ngForm">
+
+            <!-- name -->
+            <text-input label="AssetInstance-Name" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.name" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- type -->
+            <text-input label="Type of AssetInstance" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.assetType" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- serialNumber -->
+            <text-input label="Serial-/Vendor-Number" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.serialNumber" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- currentLocation -->
+            <text-input label="Current Location of Asset" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.currentLocation" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- originalLocation -->
+            <text-input label="Original Location of Asset" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.originalLocation" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- dataEndpoint -->
+            <text-input label="Hosted Datastream Endpoint" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.dataEndpoint" [rows]="1" [required]="true">
+            </text-input>
+
+            <!-- ownerProperty -->
+            <text-input label="Owner of this Asset" labelClass="col-6" valueClass="col-6"
+                        [disabled]="true" [(text)]="instance.ownerProperty" [rows]="1" [required]="true">
+            </text-input>
+        </form>
+    </div>
+
+    <div class="col-6 align-right">
+        <image-loader [readOnly]="true" [productImage]="instance.assetImages" [parentForm]="publishForm"></image-loader>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- asset button area -->
+<!------------------------------------------------------------------------------------------------------------>
+<div class="form-group col-12 row" id="buttons-view">
+    <form id="buttons-form" #customPropertyForm="ngForm" class="col-12">
+
+        <h3><span [innerHTML]="'Asset Control Operations' | translate"></span></h3><br />
+
+        <!-- core operations -->
+        <button class="btn btn-danger ml-2 operation-btn-left" [disabled]="!customPropertyForm.form.valid" (click)="deleteAsset()">
+            <span [innerHTML]="'Delete Asset' | translate"></span>
+        </button>
+
+        <button class="btn btn-primary ml-2 operation-btn-left" [disabled]="!customPropertyForm.form.valid" (click)="editAsset()">
+            <span [innerHTML]="'Edit Asset' | translate"></span>
+        </button>
+
+        <button class="btn btn-success ml-2 operation-btn-left" [disabled]="!customPropertyForm.form.valid" (click)="showMaintenance()">
+            <span [innerHTML]="'Add Maintenance' | translate"></span>
+        </button>
+
+        <!-- operator operations -->
+        <button class="btn btn-danger ml-2 operation-btn-right" [disabled]="!customPropertyForm.form.valid" (click)="stopAsset()">
+            <span [innerHTML]="'Stop Asset' | translate"></span>
+        </button>
+
+        <button class="btn btn-success ml-2 operation-btn-right" [disabled]="!customPropertyForm.form.valid" (click)="startAsset()">
+            <span [innerHTML]="'Start Asset' | translate"></span>
+        </button>
+
+        <br/><br/>
+    </form>
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- Form: Add-Maintenance -->
+<!------------------------------------------------------------------------------------------------------------>
+<div *ngIf="editMaintenance" class="form-group col-12 row align-left" id="new-maintenance">
+
+    <form id="add-maintenance-form" #customPropertyForm="ngForm" class="col-12">
+
+        <!-- maintenanceDate -->
+        <text-input label="Date of Maintenance" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.maintenanceDate" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- maintenanceDuration -->
+        <text-input label="Duration of Maintenance" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.maintenanceDuration" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- maintenanceReason -->
+        <text-input label="Reason of Maintenance" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.maintenanceReason" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- maintenanceCostPlan -->
+        <text-input label="Costs of Maintenance" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.maintenanceCostPlan" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- descriptionPyhsicalChanges -->
+        <text-input label="Description of pyhisical changes" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.descriptionPyhsicalChanges" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- descriptionSoftwareChanges -->
+        <text-input label="Description of software changes" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.descriptionSoftwareChanges" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- listOfInvolvedSuppliers -->
+        <text-input label="List of involved suppliers" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.listOfInvolvedSuppliers" [rows]="1" [required]="true">
+        </text-input>
+
+        <!-- additionalText -->
+        <text-input label="Any additional information" labelClass="col-4" valueClass="col-8"
+                    [(text)]="newMaintenance.additionalText" [rows]="1" [required]="true">
+        </text-input>
+
+        <br />
+
+        <button class="btn btn-primary ml-2 add-maintenance-btn" [disabled]="!customPropertyForm.form.valid" (click)="addMaintenance()">
+            <span [innerHTML]="'Register as Maintenance' | translate"></span>
+        </button>
+    </form>
+    <p><span [innerHTML]="'Add a maintenance to the asset, when done.' | translate"></span></p>
+</div>
+
+<!------------------------------------------------------------------------------------------------------------>
+<!-- List of added maintenance entries -->
+<!------------------------------------------------------------------------------------------------------------>
+<div class="row col-12 form-group" id="maintenance-view">
+
+    <form id="maintenance-form" #customPropertyForm="ngForm" class="col-12">
+
+        <h3><span [innerHTML]="'List of Maintenance Changes' | translate"></span></h3><br/>
+
+        <div class="row col-12">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th><span [innerHTML]="'Date' | translate"></span></th>
+                    <th><span [innerHTML]="'Duration' | translate"></span></th>
+                    <th><span [innerHTML]="'Reason' | translate"></span></th>
+                    <th><span [innerHTML]="'CostPlan' | translate"></span></th>
+                    <th><span [innerHTML]="'PhysicalChanges' | translate"></span></th>
+                    <th><span [innerHTML]="'SoftwareChanges' | translate"></span></th>
+                    <th><span [innerHTML]="'Involved Suppliers' | translate"></span></th>
+                    <th><span [innerHTML]="'Additional Text' | translate"></span></th>
+                </tr>
+                <tr *ngFor="let maintenance of instance.listMaintenance">
+                    <td>{{maintenance.maintenanceDate}}</td>
+                    <td>{{maintenance.maintenanceDuration}}</td>
+                    <td>{{maintenance.maintenanceReason}}</td>
+                    <td>{{maintenance.maintenanceCostPlan}}</td>
+                    <td>{{maintenance.descriptionPyhsicalChanges}}</td>
+                    <td>{{maintenance.descriptionSoftwareChanges}}</td>
+                    <td>{{maintenance.listOfInvolvedSuppliers}}</td>
+                    <td>{{maintenance.additionalText}}</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

@@ -73,25 +73,26 @@ export class LogoutComponent implements OnInit {
         this.shoppingCartDataService.resetData();
 
         // if rocket chat enabled
+        if (this.config.rocketChatEnabled) {
+            let headers = new Headers({ 'Content-Type': 'application/json', 'X-Auth-Token': this.cookieService.get(constants.chatToken), 'X-User-Id': this.cookieService.get(constants.chatUserID) });
+            const url = myGlobals.rocketChatEndpoint + '/api/v1/logout';
+            this.http
+                .post(url, JSON.stringify({}), { headers: headers })
+                .toPromise()
+                .then(res => {
+                    console.log(res);
+                    this.cookieService.delete(constants.chatRCConnect, '/');
+                    this.cookieService.delete(constants.chatRCToken, '/');
+                    this.cookieService.delete(constants.chatRCID, '/');
 
-        let headers = new Headers({ 'Content-Type': 'application/json', 'X-Auth-Token': this.cookieService.get(constants.chatToken), 'X-User-Id': this.cookieService.get(constants.chatUserID) });
-        const url = myGlobals.rocketChatEndpoint + '/api/v1/logout';
-        this.http
-            .post(url, JSON.stringify({}), { headers: headers })
-            .toPromise()
-            .then(res => {
-                console.log(res);
-                this.cookieService.delete(constants.chatRCConnect, '/');
-                this.cookieService.delete(constants.chatRCToken, '/');
-                this.cookieService.delete(constants.chatRCID, '/');
-
-                this.cookieService.delete(constants.chatToken, '/');
-                this.cookieService.delete(constants.chatUsername, '/');
-                this.cookieService.delete(constants.chatUserID, '/');
-            })
-            .catch(e => {
-                console.error("Error occurred while logging off from rocket chat");
-            });
+                    this.cookieService.delete(constants.chatToken, '/');
+                    this.cookieService.delete(constants.chatUsername, '/');
+                    this.cookieService.delete(constants.chatUserID, '/');
+                })
+                .catch(e => {
+                    console.error("Error occurred while logging off from rocket chat");
+                });
+        }
 
         if (this.config.loggingEnabled) {
             let cID = "";
