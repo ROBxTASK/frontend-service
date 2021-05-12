@@ -50,7 +50,7 @@ export class SimpleSearchService {
     }
 
     getUblProperties(facets) {
-        let url = this.url + `/property/search`;
+        let url = this.url + `/propertyType/select`;
         let searchObject: any = {};
         searchObject.rows = 2147483647;
         searchObject.start = 0;
@@ -70,9 +70,9 @@ export class SimpleSearchService {
     }
 
     getFields(): Promise<any> {
-        let url = this.url + `/item/fields`;
+        let url = this.url + `/assetType/fields`;
         if (this.delegated)
-            url = this.delegate_url + `/item/fields`;
+            url = this.delegate_url + `/assetType/fields`;
         // const url = `${this.url}/select?q=*:*&rows=0&wt=csv`;
         return this.http
             .get(url, { headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.cookieService.get("bearer_token") }) })
@@ -82,9 +82,9 @@ export class SimpleSearchService {
     }
 
     getCompFields(): Promise<any> {
-        let url = this.url + `/party/fields`;
+        let url = this.url + `/partyType/fields`;
         if (this.delegated)
-            url = this.delegate_url + `/party/fields`;
+            url = this.delegate_url + `/partyType/fields`;
         // const url = `${this.url}/select?q=*:*&rows=0&wt=csv`;
         return this.http
             .get(url, { headers: new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.cookieService.get("bearer_token") }) })
@@ -111,9 +111,9 @@ export class SimpleSearchService {
             searchObject.sort.push(sort);
         }
         query = queryRes.queryStr;
-        let url = this.url + `/item/search`;
+        let url = this.url + `/assetType/select`;
         if (this.delegated)
-            url = this.delegate_url + `/item/search`;
+            url = this.delegate_url + `/assetType/select`;
         searchObject.rows = rows;
         searchObject.start = page - 1;
         searchObject.q = query;
@@ -153,12 +153,12 @@ export class SimpleSearchService {
         let queryRes;
         queryRes = this.buildQueryString(query, myGlobals.query_settings_comp, true, false);
         query = queryRes.queryStr;
-        let url = this.url + `/party/search`;
+        let url = this.url + `/partyType/select`;
         let local = false;
         if (forceLocal)
             local = forceLocal;
         if (this.delegated && !local)
-            url = this.delegate_url + `/party/search`;
+            url = this.delegate_url + `/partyType/select`;
         let searchObject: any = {};
         searchObject.rows = rows;
         searchObject.start = page - 1;
@@ -207,11 +207,11 @@ export class SimpleSearchService {
             "boostingFactors": {}
         };
         let queryRes = this.buildQueryString(query, querySettings, true, true);
-        let url = this.url + `/item/search`;
+        let url = this.url + `/assetType/select`;
         if (this.delegated)
-            url = this.delegate_url + `/item/search`;
+            url = this.delegate_url + `/assetType/select`;
         if (search_index == "Category") {
-            url = this.url + `/class/search`;
+            url = this.url + `/classType/select`;
         }
         let searchObject: any = {};
         searchObject.rows = 0;
@@ -243,12 +243,12 @@ export class SimpleSearchService {
             "boostingFactors": {}
         };
         let queryRes = this.buildQueryString(query, querySettings, true, true);
-        let url = this.url + `/party/search`;
+        let url = this.url + `/partyType/select`;
         let local = false;
         if (forceLocal)
             local = forceLocal;
         if (this.delegated && !local)
-            url = this.delegate_url + `/party/search`;
+            url = this.delegate_url + `/partyType/select`;
         let searchObject: any = {};
         searchObject.rows = 0;
         searchObject.q = queryRes.queryStr;
@@ -279,7 +279,7 @@ export class SimpleSearchService {
             "boostingFactors": {}
         };
         let queryRes = this.buildQueryString(query, querySettings, true, true);
-        const url = this.url + `/class/search`
+        const url = this.url + `/classType/select`
         let searchObject: any = {};
         searchObject.rows = 0;
         searchObject.q = "(" + queryRes.queryStr + ")";
@@ -500,9 +500,9 @@ export class SimpleSearchService {
     getCompanies(query: string, facets: string[], facetQueries: string[]): Promise<any> {
         query = query.replace(/[!'()]/g, '');
         // var start = page*10-10;
-        let url = this.url + `/party/search`;
+        let url = this.url + `/partyType/select`;
         if (this.delegated)
-            url = this.delegate_url + `/party/search`;
+            url = this.delegate_url + `/partyType/select`;
 
         let searchObject: any = {};
         searchObject.rows = facetQueries.length;
@@ -534,9 +534,9 @@ export class SimpleSearchService {
 
     getFavouriteSearch(query: string, facets: string[], page?: number, sortType?: string): Promise<any> {
         query = query;
-        let url = this.url + `/item/search`;
+        let url = this.url + `/assetType/select`;
         if (this.delegated)
-            url = this.delegate_url + `/item/search`;
+            url = this.delegate_url + `/assetType/select`;
         let searchObject: any = {};
         searchObject.rows = 10;
         searchObject.start = page - 1;
@@ -571,7 +571,7 @@ export class SimpleSearchService {
     getCompanyBasedProductsAndServices(query: string, facets: string[], facetQueries: string[], page: number, cat: string, catID: string): Promise<any> {
         // let queryRes = this.buildQueryString(query,myGlobals.query_settings,true,false);
         // query = queryRes.queryStr;
-        const url = this.url + `/item/search`
+        const url = this.url + `/assetType/select`
         let searchObject: any = {};
         searchObject.rows = 10;
         searchObject.start = page - 1;

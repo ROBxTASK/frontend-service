@@ -88,7 +88,7 @@ export class CategoryService {
      * @param uris
      */
     public getCategories(uris: string[]): Promise<any> {
-        const url = this.indexingBaseUrl + "/class/search";
+        const url = this.indexingBaseUrl + "/classType/select";
         let query = "";
         for (let uri of uris) {
             query += `id:"${uri}" OR `;
