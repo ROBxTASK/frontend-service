@@ -31,7 +31,7 @@ node('robxtask-jenkins-slave') {
     // -----------------------------------------------
     // ---------------- Master Branch ----------------
     // -----------------------------------------------
-    if (env.BRANCH_NAME == 'main') {
+    if (env.BRANCH_NAME == 'master') {
 
         stage('Clone and Update') {
             git(url: 'https://github.com/ROBxTASK/frontend-service.git', branch: env.BRANCH_NAME)
