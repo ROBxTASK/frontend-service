@@ -1,5 +1,4 @@
 FROM tomcat:8-jre8
-MAINTAINER Salzburg Research <nimble-srfg@salzburgresearch.at>
 
 # install jdk (we need 'jar' in 'entrypoint.sh')
 RUN apt-get update && apt-get install -y openjdk-8-jdk
