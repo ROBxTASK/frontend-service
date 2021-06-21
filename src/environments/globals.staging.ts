@@ -158,9 +158,9 @@ TODO Mathias:
 */
 
 export const config = {
-"federationInstanceId": "IASSET-STAGING",
-"platformName": "i-Asset Staging",
-"envName": "iasset-staging",
+"federationInstanceId": "ROBXTASK-STAGING",
+"platformName": "ROBxTASK Staging",
+"envName": "robxtask-staging",
 "addCartBehaviour": "single",
 "companyRegistrationRequired": false,
 "categoryFilter": {
@@ -230,7 +230,7 @@ export const config = {
 },
 "loggingEnabled": false,
 "rocketChatEnabled": false,
-"logoPath": "./assets/logo_iasset_white.png",
+"logoPath": "./assets/logo_robxtask_white.png",
 "federationLogoPath": "./assets/logo_mvp_efactory.png",
 "logoRequired": false,
 "phoneNumberRequired": false,
@@ -297,10 +297,10 @@ export const config = {
         "purchaser",
         "sales_officer"
     ],
-    "supportMail": "mathias.schmoigl@salzburgresearch.at",
+    "supportMail": "oliver.jung@salzburgresearch.at",
     "supportMailContent": {
-        "en": "Dear NIMBLE support team,\n\n\nI have encountered an issue.\n\nDescription of the issue:\n[Please insert a detailed description of the issue here. Add some screenshots as an attachement if they are of use.]",
-        "es": "Equipo de soporte NIMBLE,\n\n\nHe detectado una incidencia.\n\nDescripción:\n[Por favor indique a continuación los detalles de la incidencia. Si es posible incluya alguna captura de pantalla si puede ser de utilidad.]"
+        "en": "Dear ROBxTASK support team,\n\n\nI have encountered an issue.\n\nDescription of the issue:\n[Please insert a detailed description of the issue here. Add some screenshots as an attachement if they are of use.]",
+        "es": "Equipo de soporte ROBxTASK,\n\n\nHe detectado una incidencia.\n\nDescripción:\n[Por favor indique a continuación los detalles de la incidencia. Si es posible incluya alguna captura de pantalla si puede ser de utilidad.]"
     },
     "showLoginFederation": false,
     "unshippedOrdersTabEnabled": false,

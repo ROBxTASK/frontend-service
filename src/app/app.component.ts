@@ -49,7 +49,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class AppComponent implements OnInit {
 
-    public project: Project.Type = Project.Type.IAsset;
+    public project: Project.Type = Project.Type.Other;
 
     public loading = false;
     public isLoggedIn = false;

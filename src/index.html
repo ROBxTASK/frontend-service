@@ -22,7 +22,7 @@
 
 <head>
     <base href="./">
-    <title>i-Asset</title>
+    <title>ROBxTASK</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <nimble-app>
             <center>
-                <loader-nimble *ngIf="project === 0"></loader-nimble>
+                <loader-nimble *ngIf="project === 0 || project === 2"></loader-nimble>
                 <loader-iasset *ngIf="project === 1"></loader-iasset>
             </center>
             <div style="position:absolute;width:90%;padding-left:10%;left:0;bottom:1rem;">
