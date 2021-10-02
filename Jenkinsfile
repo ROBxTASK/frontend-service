@@ -20,7 +20,10 @@ node('robxtask-jenkins-slave') {
         }
 
         stage('Push Docker - staging') {
-            sh 'docker push robxtask/frontend-service:staging'
+            withCredentials([usernamePassword(credentialsId: 'docker-login-credentials', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                sh 'docker login --username USER --password PASS'
+                sh 'docker push robxtask/frontend-service:staging'
+            }
         }
 
         stage('Deploy - staging') {
