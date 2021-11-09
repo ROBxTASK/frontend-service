@@ -176,24 +176,28 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav navbar-nav">
+        <ul *ngIf="checkRoles('pm')" class="nav navbar-nav">
             <li ngbDropdown class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link pointer" [title]="config.platformName" id="dropdownMenuPlat" ngbDropdownToggle>
                     <i class="fa fa-coins"></i> <span [innerHTML]="'Platform' | translate"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuPlat" ngbDropdownMenu>
+										<!--
                     <a class="dropdown-item" routerLink="/analytics/members">
                         <i class="fa fa-user-friends dd-icon"></i> <span [innerHTML]="'Platform Members' | translate"></span>
                     </a>
+										-->
                     <a *ngIf="checkRoles('pm')" class="dropdown-item" routerLink="/analytics/management" routerLinkActive="active">
                         <i class="fa fa-cogs dd-icon"></i> <span [innerHTML]="'Company Management' | translate"></span>
                     </a>
+										<!--
                     <a *ngIf="checkRoles('pm')" class="dropdown-item" routerLink="/analytics/trust" routerLinkActive="active">
                         <i class="fa fa-sliders-h dd-icon"></i> <span [innerHTML]="'Trust Policy Configuration' | translate"></span>
                     </a>
                     <a *ngIf="checkRoles('pm')" class="dropdown-item" routerLink="/analytics/platform" routerLinkActive="active">
                         <i class="fa fa-chart-area dd-icon"></i> <span [innerHTML]="'Platform Analytics' | translate"></span>
                     </a>
+										-->
                 </div>
             </li>
         </ul>
@@ -209,9 +213,11 @@
                     <a *ngIf="checkRoles('comp-settings')" class="dropdown-item" routerLink="/user-mgmt/company-settings" routerLinkActive="active">
                         <i class="fa fa-cog dd-icon"></i> <span [innerHTML]="'Company Settings' | translate"></span>
                     </a>
+										<!--
                     <a *ngIf="checkRoles('comp-ratings')" class="dropdown-item" routerLink="/user-mgmt/company-rating" routerLinkActive="active">
                         <i class="fa fa-star dd-icon"></i> <span [innerHTML]="'Company Ratings' | translate"></span>
                     </a>
+										-->
                     <a *ngIf="config.showAgent && checkRoles('bp')" class="dropdown-item" routerLink="/user-mgmt/agents" routerLinkActive="active">
                         <i class="fa fa-user-tie dd-icon"></i> <span [innerHTML]="'Agents' | translate"></span>
                     </a>

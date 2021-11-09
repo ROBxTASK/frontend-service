@@ -193,14 +193,14 @@ export class CompanyInvitationComponent implements OnInit {
         tooltip += "<table class='table table-striped table-bordered'>";
         tooltip += "<tr><th>Role</th><th>Permissions</th></tr>";
         if (this.config.supportedRoles.indexOf("company_admin") != -1)
-            tooltip += "<tr><td>Company Admin</td><td>A member of the company that got all rights on the NIMBLE platform (except for assigning external/legal representatives)</td></tr>";
+            tooltip += "<tr><td>Company Admin</td><td>A member of the company that got all rights on the ROBxTASK platform (except for assigning legal representatives)</td></tr>";
         if (this.config.supportedRoles.indexOf("external_representative") != -1)
             tooltip += "<tr><td>External Representative</td><td>Somebody from outside the company that got all rights connected to the company on the NIMBLE platform (except for assigning external/legal representatives)</td></tr>";
         tooltip += "<tr><td>Legal Representative</td><td>The legally liable representative of your company. Usually a single person. Has got all rights on the NIMBLE platform</td></tr>";
         if (this.config.supportedRoles.indexOf("monitor") != -1)
-            tooltip += "<tr><td>Monitor</td><td>Can observe sales, purchases and relevant business data on the NIMBLE platform without executing the associated business processes</td></tr>";
+            tooltip += "<tr><td>Monitor</td><td>Can monitor assets on the platform</td></tr>";
         if (this.config.supportedRoles.indexOf("publisher") != -1)
-            tooltip += "<tr><td>Publisher</td><td>Can publish and maintain the catalogues of the company</td></tr>";
+            tooltip += "<tr><td>Publisher</td><td>Can create task designs on the platform</td></tr>";
         if (this.config.supportedRoles.indexOf("purchaser") != -1)
             tooltip += "<tr><td>Purchaser</td><td>Can observe purchases on the NIMBLE platform and execute the associated business processes</td></tr>";
         if (this.config.supportedRoles.indexOf("sales_officer") != -1)

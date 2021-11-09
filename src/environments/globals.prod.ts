@@ -174,9 +174,9 @@ export const config = {
 "dataChannelsEnabled": true,
 "defaultBusinessProcessIds": [
 ],
-"defaultSearchIndex": "Category",
+"defaultSearchIndex": "Name",
 "delegationEnabled": false,
-"docLink": "https://www.nimble-project.org/docs/",
+"docLink": "https://robxtask.salzburgresearch.at",
 "frameContractTabEnabled": false,
 "imprint": "<u>Platform Owner & Provider</u><br/><b>Salzburg Research Forschungsgesellschaft m.b.H.</b><br/>Jakob Haringer Straße 5/3<br/>5020 Salzburg, Austria<br/>Phone: +43.662.2288.200<br/>Fax: +43.662.2288.222<br/>E-Mail: <a href='mailto:info@salzburgresearch.at'>info@salzburgresearch.at</a><br/>Internet: <a href='https://www.salzburgresearch.at' target='_blank'>www.salzburgresearch.at</a><br/>Managing Director: Siegfried Reich<br/>Registry Number: LG Salzburg (FN 149016 t)<br/>UID: ATU 41145408<br/>Content Officer: Siegfried Reich<br/>Owner: State of Salzburg (100%)",
 "kibanaConfig": {
@@ -290,14 +290,11 @@ export const config = {
     ],
     "supportedRoles": [
         "company_admin",
-        "external_representative",
         "legal_representative",
         "monitor",
-        "publisher",
-        "purchaser",
-        "sales_officer"
+        "publisher"
     ],
-    "supportMail": "oliver.jung@salzburgresearch.at",
+    "supportMail": "robxtask@salzburgresearch.at",
     "supportMailContent": {
         "en": "Dear ROBxTASK support team,\n\n\nI have encountered an issue.\n\nDescription of the issue:\n[Please insert a detailed description of the issue here. Add some screenshots as an attachement if they are of use.]",
         "es": "Equipo de soporte ROBxTASK,\n\n\nHe detectado una incidencia.\n\nDescripción:\n[Por favor indique a continuación los detalles de la incidencia. Si es posible incluya alguna captura de pantalla si puede ser de utilidad.]"
@@ -381,13 +378,11 @@ export const facet_count = -1;
 - boostingFactors: Allows defining different boosting factors for searching by relevance. Keys are the field names listed in "fields" and values are -1 (for negative boosts) or a multiple of 2
 */
 export const query_settings = {
-    "fields": ["STANDARD", "commodityClassficationUri", "{LANG}_label", "{LANG}_desc"],
+    "fields": ["STANDARD", "{LANG}_label"],
     "boosting": true,
     "boostingFactors": {
         "STANDARD": 4,
-        "commodityClassficationUri": 16,
-        "{LANG}_label": 64,
-        "{LANG}_desc": -1
+        "{LANG}_label": 64
     }
 };
 // Query settings for company search

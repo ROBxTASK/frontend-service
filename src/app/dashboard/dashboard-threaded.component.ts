@@ -88,12 +88,15 @@ export class DashboardThreadedComponent implements OnInit {
                 this.cookieService.set("show_welcome", "false");
             });
         if (this.selectedTab === TABS.WELCOME) {
+            this.selectedTab = TABS.WELCOME;
+            /*
             if (this.appComponent.checkRoles('purchases'))
                 this.selectedTab = TABS.PURCHASES;
             else if (this.appComponent.checkRoles('sales'))
                 this.selectedTab = TABS.SALES;
             else
                 this.selectedTab = TABS.CATALOGUE;
+            */
         }
     }
 
@@ -162,6 +165,8 @@ export class DashboardThreadedComponent implements OnInit {
                 return upped;
             }
         }
+        return TABS.WELCOME;
+        /*
         if (this.appComponent.checkRoles('purchases'))
             return TABS.PURCHASES;
         if (this.appComponent.checkRoles('sales'))
@@ -179,5 +184,6 @@ export class DashboardThreadedComponent implements OnInit {
         if (this.appComponent.checkRoles('performance'))
             return TABS.PERFORMANCE;
         return null;
+        */
     }
 }

@@ -73,7 +73,17 @@ export class CompanySettingsComponent implements OnInit {
                 this.viewMode = "full";
             if (this.companyId && this.appComponent.checkRoles("pm"))
                 this.getCompanySettings(this.companyId, this.federationId);
+            else {
+                const userId = this.cookieService.get("user_id");
+                this.userService.getSettingsForUser(userId).then(settings => {
+                    this.processSettings(settings);
+                })
+                    .catch(error => {
+                        this.initCallStatus.error("Error while fetching company settings", error);
+                    });
+            }
         });
+        /*
         const userId = this.cookieService.get("user_id");
         if (!this.companyId) {
             this.userService.getSettingsForUser(userId).then(settings => {
@@ -86,6 +96,7 @@ export class CompanySettingsComponent implements OnInit {
         else {
             this.getCompanySettings(this.companyId, this.federationId);
         }
+        */
     }
 
     getCompanySettings(id, federationId) {

@@ -21,7 +21,7 @@
 </div>
 
 <div *ngIf="details" class="row">
-    <div class="col-5">
+    <div class="col-6">
         <h4>
             <p><span [innerHTML]="'Company Data' | translate"></span></p>
         </h4>
@@ -44,7 +44,7 @@
         <text-input presentationMode="view" label="Website" [text]="details.description.website" labelClass="col-4" valueClass="col-8">
         </text-input>
     </div>
-    <div class="col-5 border-left">
+    <div class="col-6 border-left">
         <h4>
             <p><span [innerHTML]="'Address' | translate"></span></p>
         </h4>
@@ -61,12 +61,14 @@
         <text-input presentationMode="view" label="Country" [text]="details.details.address.country" labelClass="col-4" valueClass="col-8">
         </text-input>
     </div>
+    <!--
     <div class="col-2 border-left">
         <h4>
             <p><span [innerHTML]="'Store' | translate"></span></p>
         </h4>
         <button class="btn btn-lg btn-primary w-100" (click)="openSearchPage()"><i class="fa fa-store"></i></button>
     </div>
+    -->
 </div>
 
 <div *ngIf="managementMode && appComponent.checkRoles('pm') && !initCallStatus.isLoading() && details.details.vatNumber && details.details.vatNumber != ''" class="row actions-row pr-0">
@@ -78,6 +80,7 @@
     </div>
 </div>
 
+<!--
 <div *ngIf="details" class="row">
     <div class="col-12">
         <hr>
@@ -87,6 +90,7 @@
         <company-rating [id]="party.partyId" [federationId]="party.federationInstanceID" [hideTitle]="true"></company-rating>
     </div>
 </div>
+-->
 
 <div *ngIf="managementMode && appComponent.checkRoles('pm') && !initCallStatus.isLoading()" class="row actions-row pr-0">
     <div class="col-12">
