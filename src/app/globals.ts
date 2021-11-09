@@ -31,6 +31,8 @@ export const debug = false;
 export const base_path = "http://nimble-staging.salzburgresearch.at";
 // IAsset platform base path of backend services
 export const base_path_iasset = "https://iasset.salzburgresearch.at";
+// ROBxTASK platform deployment base path of backend services
+export const base_path_rxt = "https://robxtask.salzburgresearch.at/robxtask";
 // Base path of explorative search endpoints
 export const ub_base = "http://nimble-staging.salzburgresearch.at/search";
 // Base path of Keycloak IDP
@@ -44,6 +46,7 @@ export const frontendURL = base_path + "/frontend/";
 
 
 // Service endpoints
+// ToDo: Switch to ROBxTASK endpoints - CORS required!
 export const user_mgmt_endpoint = `${base_path_iasset}/identity`;
 export const catalogue_endpoint = `${base_path_iasset}/catalog`;
 export const bpe_endpoint = `${base_path_iasset}/business-process`;

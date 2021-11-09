@@ -47,7 +47,7 @@ export const frontendURL = base_path + "/frontend/";
 
 // Service endpoints
 export const user_mgmt_endpoint = `${base_path_rxt}/identity`;
-export const catalogue_endpoint = `${base_path_rxt}/catalog`;
+export const catalogue_endpoint = `${base_path_iasset}/catalog`;
 export const bpe_endpoint = `${base_path_rxt}/business-process`;
 export const data_channel_endpoint = `${base_path_rxt}/data-channel`;
 export const iasset_registry_endpoint = `${base_path_rxt}/registry-service`;
