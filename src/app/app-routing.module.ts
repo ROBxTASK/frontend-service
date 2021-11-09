@@ -32,7 +32,8 @@ const routes: Routes = [
     { path: 'data-channel', loadChildren: './data-channel/data-channel.module#DataChannelModule' },
     /*{ path: 'tnt', loadChildren: './tnt/tnt.module#TnTModule' },*/
     { path: 'product-details', loadChildren: './product-details/product-details.module#ProductDetailsModule' },
-    { path: 'analytics', loadChildren: './analytics/analytics.module#AnalyticsModule' }/*,*/
+    { path: 'analytics', loadChildren: './analytics/analytics.module#AnalyticsModule' },
+    { path: 'task-design', loadChildren: './task-design/task-design.module#TaskDesignModule' }
     /*{ path: 'qualiexplore', loadChildren: './qualiexplore/qualiexplore.module#QualiExploreModule' },*/
     /*{ path: 'legislation', loadChildren: './legislation/legislation.module#LegislationModule' }*/
 ];

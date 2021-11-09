@@ -66,11 +66,17 @@
                     <i class="fa fa-list-ul"></i> <span [innerHTML]="'Dashboard' | translate"></span>
                 </a>
             </li>
+						<li class="nav-item" *ngIf="checkRoles('catalogue')" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/iasset-registry/register-type']" [queryParams]="{pageRef: 'menu', productType: 'product'}">
+                    <i class="fa fa-arrow-up"></i> <span [innerHTML]="'Register' | translate"></span>
+                </a>
+            </li>
             <li class="nav-item" *ngIf="checkRoles('comp_req')" routerLinkActive="active">
                 <a class="nav-link" routerLink="/iasset-registry/asset-search">
                     <i class="fa fa-search"></i> <span [innerHTML]="'Search' | translate"></span>
                 </a>
             </li>
+						<!--
             <li ngbDropdown class="nav-item dropdown" *ngIf="checkRoles('catalogue')" routerLinkActive="active">
                 <a class="nav-link pointer" id="dropdownMenuPublish" ngbDropdownToggle>
                     <i class="fa fa-arrow-up"></i> <span [innerHTML]="'Register' | translate"></span>
@@ -83,6 +89,12 @@
                         <i class="fa fa-database dd-icon"></i> <span [innerHTML]="'Asset Instance' | translate"></span>
                     </a>
                 </div>
+            </li>
+						-->
+						<li class="nav-item" *ngIf="checkRoles('comp_req')" routerLinkActive="active">
+                <a class="nav-link" routerLink="/task-design">
+                    <i class="fa fa-project-diagram"></i> <span [innerHTML]="'Task Design' | translate"></span>
+                </a>
             </li>
             <li class="nav-item" *ngIf="checkRoles('reg_comp')" routerLinkActive="active">
                 <a class="nav-link" routerLink="/user-mgmt/company-registration">
@@ -108,11 +120,13 @@
                     </a>
                 </div>
             </li>
+						<!--
             <li class="nav-item" *ngIf="checkRoles('purchases')" routerLinkActive="active">
                 <a class="nav-link" routerLink="/bpe/shopping-cart" routerLinkActive="active">
                     <i class="fas fa-arrow-down"></i> <span [innerHTML]="'Shopping Cart' | translate"></span>
                 </a>
             </li>
+						-->
         </ul>
         <ul *ngIf="config.showChat && isLoggedIn" class="nav navbar-nav">
             <li ngbDropdown class="nav-item dropdown" [ngClass]="{'active':chatVisible}">

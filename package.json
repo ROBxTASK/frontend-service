@@ -40,6 +40,7 @@
         "@ngx-translate/http-loader": "~4.0",
         "@swimlane/ngx-charts": "~11.1",
         "@swimlane/ngx-graph": "~6.1",
+        "blockly": "~6",
         "core-js": "~2.6",
         "countries-list": "~2.4",
         "d3": "~5.0",
