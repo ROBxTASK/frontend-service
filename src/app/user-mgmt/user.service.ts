@@ -263,11 +263,19 @@ export class UserService {
     }
 
     getSettingsForParty(partyId: string, federationId: string = FEDERATIONID()): Promise<CompanySettings> {
+        /*
         return Promise.all([
             this.getSettingsPromise(partyId, federationId),
             this.getCompanyNegotiationSettingsForParty(partyId, federationId)
         ]).then(([settings, negotiationSettings]) => {
             settings.negotiationSettings = negotiationSettings;
+            return settings;
+        })
+        */
+        return Promise.all([
+            this.getSettingsPromise(partyId, federationId)
+        ]).then(([settings]) => {
+            settings.negotiationSettings = null;
             return settings;
         })
     }

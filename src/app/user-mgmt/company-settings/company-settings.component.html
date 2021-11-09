@@ -99,41 +99,53 @@
 </div>
 
 <!-- Company Description, hidden to avoid reloading  -->
+<!--
 <div *ngIf="settings" [hidden]="selectedTab !== 'COMPANY_DESCRIPTION'">
     <company-description-settings [settings]="settings" (onSaveEvent)="onSettingsUpdated()">
     </company-description-settings>
 </div>
+-->
 
 <div *ngIf="viewMode=='full'">
 
     <!-- Negotiation Settings, hidden to avoid reloading -->
+    <!--
     <div *ngIf="settings" [hidden]="selectedTab !== 'NEGOTIATION_SETTINGS'">
         <company-negotiation-settings [settings]="settings">
         </company-negotiation-settings>
     </div>
+    -->
 
     <!-- Terms and Conditions, hidden to avoid reloading -->
+    <!--
     <div *ngIf="settings" [hidden]="selectedTab !== 'TERMS_AND_CONDITIONS'">
         <company-terms-and-conditions [settings]="settings">
         </company-terms-and-conditions>
     </div>
+    -->
 
     <!-- Delivery Terms, hidden to avoid reloading -->
+    <!--
     <div *ngIf="settings" [hidden]="selectedTab !== 'DELIVERY_TERMS'">
         <company-delivery-terms [settings]="settings" (onSaveEvent)="onSettingsUpdated()">
         </company-delivery-terms>
     </div>
+    -->
 
     <!-- Company Certificates, hidden to avoid reloading -->
+    <!--
     <div *ngIf="settings" [hidden]="selectedTab !== 'CERTIFICATES'">
         <company-certificates-settings [settings]="settings" [certificates]="certificates" [ppapLevel]="ppapLevel" (onSaveEvent)="onSettingsUpdated()">
         </company-certificates-settings>
     </div>
+    -->
 
     <!-- Company Favourite Categories, hidden to avoid reloading -->
+    <!--
     <div *ngIf="settings" [hidden]="selectedTab !== 'CATEGORIES'">
         <company-categories-settings [settings]="settings">
         </company-categories-settings>
     </div>
+    -->
 
 </div>
