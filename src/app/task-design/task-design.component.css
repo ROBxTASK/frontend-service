@@ -1,0 +1,6 @@
+#downloadBtn {
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  z-index: 1;
+}
