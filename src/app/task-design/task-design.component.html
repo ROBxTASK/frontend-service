@@ -1,46 +1,75 @@
+<button id="uploadBtn" class="btn btn-lg btn-primary" (click)="uploadXML()"><i class="fa fa-upload"></i></button>
 <button id="downloadBtn" class="btn btn-lg btn-primary" (click)="downloadXML()"><i class="fa fa-download"></i></button>
 <div id="blocklyDiv" style="width: 100%; height: 80vh"></div>
 <xml id="toolbox" style="display:none">
-  <category name="Initialization and Data" colour="0">
+  <category name="Device Initialization" colour="0">
     <block type="SetAsset"></block>
-    <block type="Text"></block>
-    
+	<block type="Text" editable="false">
+		<field name="text">ARTI Chasi</field>
+	</block>
+	<block type="Text" editable="false">
+		<field name="text">Camera system</field>
+	</block>
+	<block type="Text" editable="false">
+		<field name="text">Fitbit Smartwatch</field>
+	</block>
+	<block type="Text" editable="false">
+		<field name="text">Franka Panda</field>
+	</block>
+	<block type="Text" editable="false">
+		<field name="text">MiR 100 Mobile Platform</field>
+	</block>
+	<block type="Text" editable="false">
+		<field name="text">Q.bo One</field>
+	</block>
+    <block type="Text" editable="false">
+		<field name="text">Universal Robot Manipulator UR10 CB3</field>
+	</block>
+	<block type="Text"></block>
   </category>
   <category name="Internal Communication" colour="40">
     <block type="SendMessage"></block>
     <block type="OnMessageReceive"></block>
+	<block type="Text"></block>
   </category>
   <category name="Moving" colour="80">
     <block type="MoveToPosition"></block>
     <block type="MoveToLocation"></block>
     <block type="DeliverObject"></block>
     <block type="FetchObject"></block>
+	<block type="Text"></block>
   </category>
   <category name="Detecting" colour="120">
     <block type="MeasureHydration"></block>
     <block type="DetectObject"></block>
+	<block type="Text"></block>
   </category>
   <category name="Grabbing and Unloading" colour="160">
     <block type="GrabObject"></block>
     <block type="PutObject"></block>
+	<block type="Text"></block>
   </category>
   <category name="Teaching" colour="200">
     <block type="TeachingWorkspacePosition"></block>
     <block type="TeachingObjectRecognition"></block>
+	<block type="Text"></block>
   </category>
   <category name="Basic Control Structures" colour="240">
     <block type="Loop"></block>
     <block type="Selection"></block>
     <block type="WaitForCondition"></block>
+	<block type="Text"></block>
   </category>
   <category name="Getting / Setting Data" colour="280">
     <block type="GetData"></block>
     <block type="SetData"></block>
     <block type="WaitForExternalEvent"></block>
+	<block type="Text"></block>
   </category>
   <category name="User Input" colour="36" colour="320">
     <block type="WaitForUserInput"></block>
     <block type="VoiceOutput"></block>
     <block type="GraphicalUserInteraction"></block>
+	<block type="Text"></block>
   </category>
 </xml>

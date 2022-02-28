@@ -2,10 +2,10 @@ Blockly.Blocks['SetAsset'] = {
   init: function() {
     this.appendValueInput("asset")
         .setCheck("String")
-        .appendField("SetAsset");
+        .appendField("SetDevice");
     this.setNextStatement(true, null);
     this.setColour(0);
- this.setTooltip("Select the asset to be used for the following commands.");
+ this.setTooltip("Select the device to be used for the following commands.");
  this.setHelpUrl("");
   }
 };
@@ -15,7 +15,7 @@ Blockly.Blocks['Text'] = {
 	this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput(""), "text");
     this.setOutput(true, null);
-    this.setColour(0);
+    this.setColour("#777777");
  this.setTooltip("A string, object or statement.");
  this.setHelpUrl("");
   }

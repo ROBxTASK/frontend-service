@@ -16,6 +16,11 @@ export class TaskDesignComponent implements OnInit {
       scrollbars: false
     });
   }
+  uploadXML() {
+	var xmlText = window.prompt("Enter your XML: ");
+	var xmlDom = Blockly.Xml.textToDom(xmlText);
+	Blockly.Xml.clearWorkspaceAndLoadFromXml(xmlDom,Blockly.mainWorkspace);
+  }
   downloadXML() {
     let xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
     let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
