@@ -29,6 +29,7 @@ export class DeviceRegistry implements OnInit {
     callStatus: CallStatus = new CallStatus();
     deviceJson = "";
     deviceId = "";
+    comp_id;
 
     ngOnInit() {
       this.route.queryParams.subscribe(params => {
@@ -47,6 +48,8 @@ export class DeviceRegistry implements OnInit {
 				        private cookieService: CookieService,
                 public router: Router,
                 public route: ActivatedRoute) {
+
+      this.comp_id = this.cookieService.get("company_id");
 
     }
 
@@ -67,6 +70,9 @@ export class DeviceRegistry implements OnInit {
     registerDevice() {
       this.callStatus.submit();
       if (this.deviceId == "") {
+        let deviceJsonParse = JSON.parse(this.deviceJson);
+        deviceJsonParse["DeviceOwner"] = this.comp_id;
+        this.deviceJson = JSON.stringify(deviceJsonParse);
         this.registryService.addDevice(this.deviceJson)
         .then(res => {
           this.callStatus.callback("New device registered.", true);
