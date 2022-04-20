@@ -75,7 +75,7 @@ export class DeviceRegistry implements OnInit {
         this.deviceJson = JSON.stringify(deviceJsonParse);
         this.registryService.addDevice(this.deviceJson)
         .then(res => {
-          this.callStatus.callback("New device registered.", true);
+          this.callStatus.callback("New device registered.", false);
           this.deviceJson = "";
           this.deviceId = "";
         })
@@ -86,7 +86,7 @@ export class DeviceRegistry implements OnInit {
       else {
         this.registryService.updateDevice(this.deviceJson)
         .then(res => {
-          this.callStatus.callback("Device updated.", true);
+          this.callStatus.callback("Device updated.", false);
           this.deviceJson = "";
           this.deviceId = "";
         })
