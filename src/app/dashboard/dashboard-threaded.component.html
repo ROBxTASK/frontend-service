@@ -115,9 +115,9 @@
             <div class="row text-center">
 
                 <div *ngIf="this.appComponent.checkRoles('catalogue')" class="col-6">
-                    <p><span [innerHTML]="'If you are looking to register Assets' | translate"></span><p>
+                    <p><span [innerHTML]="'If you are looking to register Devices' | translate"></span><p>
                     <!--<p><span [innerHTML]="'If you are looking to' | translate"></span> <b><span [innerHTML]="'sell' | translate"></span></b> <span [innerHTML]="'Products / Services' | translate"></span> </p>-->
-                    <a *ngIf="this.appComponent.checkRoles('catalogue')" class="btn btn-primary btn-lg" href="#/iasset-registry/register-type?pageRef=menu&productType=product" role="button"><span [innerHTML]="'Publish a Product / Service' | translate"></span></a>
+                    <a *ngIf="this.appComponent.checkRoles('catalogue')" class="btn btn-primary btn-lg" href="#/registry/device-registry" role="button"><span [innerHTML]="'Register a Device' | translate"></span></a>
                     <!--<p *ngIf="!this.appComponent.checkRoles('catalogue')"><span [innerHTML]="'Please refer to the company manager or a legal representative to get permission to publish products / services in the NIMBLE Platform' | translate"></span>.</p>-->
                 </div>
 
