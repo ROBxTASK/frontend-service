@@ -1,0 +1,78 @@
+<!--
+ * Copyright 2020
+ * SRFG - Salzburg Research Forschungsgesellschaft mbH; Salzburg; Austria
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ -->
+
+ <div class="row">
+     <div class="col-12">
+         <p class="nimble-title"><span [innerHTML]="'Search' | translate"></span></p>
+     </div>
+ </div>
+
+<input type="text" class="form-control" [(ngModel)]="query" [disabled]="search_running" (input)="filterDevices()" [placeholder]="'Name / ID' | translate">
+
+<button class="btn btn-primary mt-2 mb-2" (click)="toggleGrp()"><span *ngIf="own_devices">Show all devices</span><span *ngIf="!own_devices">Show own devices</span></button>
+
+<div *ngIf="search_running">
+	<img src="../../assets/images/form_loader.gif" />
+</div>
+
+<div *ngIf="!search_running">
+
+    <div *ngIf="filtered_devices.length == 0">
+			<span [innerHTML]="'No search results' | translate"></span><br />
+			<button *ngIf="query!='' || own_devices" class="btn btn-secondary mt-2 mb-2" (click)="resetSearch()"><span [innerHTML]="'Reset Search' | translate"></span></button>
+    </div>
+
+		<div *ngFor="let device of filtered_devices" class="mb-2">
+			<div class="card">
+			  <div class="card-body">
+					<div class="row">
+						<div class="col">
+					    <h5 class="card-title">{{device.DeviceName}}</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">{{device.DeviceID}}</h6>
+					    <p class="card-text">{{device.DeviceDescription}}</p>
+						</div>
+						<div class="col text-right">
+							<span *ngIf="device.AdditionalInfo.DeviceOwnerName==''">Owner: Unknown</span><span *ngIf="device.AdditionalInfo.DeviceOwnerName!=''">Owner: {{device.AdditionalInfo.DeviceOwnerName}}</span><br/>
+							<div *ngIf="device.DeviceOwner==comp_id"><button class="btn btn-sm btn-primary mt-2 mb-2" (click)="editDevice(device.DeviceID)"><span [innerHTML]="'Edit' | translate"></span></button><button class="btn btn-sm btn-danger ml-2 mt-2 mb-2" (click)="deleteDevice(device.DeviceID)"><span [innerHTML]="'Delete' | translate"></span></button></div>
+						</div>
+					</div>
+					<hr>
+					<button class="btn btn-sm btn-secondary mt-2 mb-2" (click)="device.AdditionalInfo.ShowSkills=!device.AdditionalInfo.ShowSkills">Skills: {{device.Skills.length}}</button>
+					<table *ngIf="device.AdditionalInfo.ShowSkills" class="table table-sm table-striped table-bordered">
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+						</tr>
+						<tr *ngFor="let skill of device.Skills">
+							<td>{{skill.SkillName}}</td>
+							<td>{{skill.SkillDescription}}</td>
+						</tr>
+					</table>
+					<hr>
+			    <button class="btn btn-sm btn-secondary mt-2 mb-2" (click)="device.AdditionalInfo.ShowConfig=!device.AdditionalInfo.ShowConfig">Config: {{device.ConfigParams.length}}</button>
+					<table *ngIf="device.AdditionalInfo.ShowConfig" class="table table-sm table-striped table-bordered">
+						<tr>
+							<th>Key</th>
+							<th>Value</th>
+						</tr>
+						<tr *ngFor="let config of device.ConfigParams">
+							<td>{{config.Key}}</td>
+							<td>{{config.Value}}</td>
+						</tr>
+					</table>
+			  </div>
+			</div>
+		</div>
+
+</div>

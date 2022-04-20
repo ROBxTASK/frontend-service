@@ -67,12 +67,12 @@
                 </a>
             </li>
 						<li class="nav-item" *ngIf="checkRoles('catalogue')" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/iasset-registry/register-type']" [queryParams]="{pageRef: 'menu', productType: 'product'}">
+                <a class="nav-link" routerLink="/registry/device-registry">
                     <i class="fa fa-arrow-up"></i> <span [innerHTML]="'Register' | translate"></span>
                 </a>
             </li>
             <li class="nav-item" *ngIf="checkRoles('comp_req')" routerLinkActive="active">
-                <a class="nav-link" routerLink="/iasset-registry/asset-search">
+                <a class="nav-link" routerLink="/registry/device-search">
                     <i class="fa fa-search"></i> <span [innerHTML]="'Search' | translate"></span>
                 </a>
             </li>

@@ -33,7 +33,8 @@ const routes: Routes = [
     /*{ path: 'tnt', loadChildren: './tnt/tnt.module#TnTModule' },*/
     { path: 'product-details', loadChildren: './product-details/product-details.module#ProductDetailsModule' },
     { path: 'analytics', loadChildren: './analytics/analytics.module#AnalyticsModule' },
-    { path: 'task-design', loadChildren: './task-design/task-design.module#TaskDesignModule' }
+    { path: 'task-design', loadChildren: './task-design/task-design.module#TaskDesignModule' },
+    { path: 'registry', loadChildren: './registry/registry.module#RegistryModule' }
     /*{ path: 'qualiexplore', loadChildren: './qualiexplore/qualiexplore.module#QualiExploreModule' },*/
     /*{ path: 'legislation', loadChildren: './legislation/legislation.module#LegislationModule' }*/
 ];

@@ -59,6 +59,7 @@ import { ShoppingCartDataService } from './bpe/shopping-cart/shopping-cart-data-
 import { CollaborationService } from './catalogue/collaboration/collaboration.service';
 import { UnshippedOrdersTransitionService } from './bpe/unshipped-order-transition-service';
 import { ValidationService } from './common/validation/validators';
+import { RegistryService } from "./registry/registry.service";
 
 import {LoaderIAsset} from './animated-loader/loader_iasset';
 import {LoaderNimble} from './animated-loader/loader_nimble';
@@ -120,7 +121,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         ShoppingCartDataService,
         CollaborationService,
         ValidationService,
-        AgentService
+        AgentService,
+        RegistryService
     ],
     bootstrap: [
         AppComponent
