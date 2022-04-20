@@ -27,8 +27,8 @@ import { CallStatus } from "../common/call-status";
 export class DeviceRegistry implements OnInit {
 
     callStatus: CallStatus = new CallStatus();
-    private deviceJson = "";
-    private deviceId = "";
+    deviceJson = "";
+    deviceId = "";
 
     ngOnInit() {
       this.route.queryParams.subscribe(params => {

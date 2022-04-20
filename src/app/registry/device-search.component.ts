@@ -27,12 +27,12 @@ import { selectPartyName } from "../common/utils";
 
 export class DeviceSearch implements OnInit {
 
-	private devices = [];
-	private filtered_devices = [];
-	private search_running = true;
-  private own_devices = false;
-	private query = "";
-	private comp_id;
+	devices = [];
+	filtered_devices = [];
+	search_running = true;
+  own_devices = false;
+	query = "";
+	comp_id;
 
     ngOnInit() {
   		this.route.queryParams.subscribe(params => {
