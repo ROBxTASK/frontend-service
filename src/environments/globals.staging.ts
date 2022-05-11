@@ -52,6 +52,7 @@ export const bpe_endpoint = `${base_path_rxt}/business-process`;
 export const data_channel_endpoint = `${base_path_rxt}/data-channel`;
 export const registry_endpoint = `${base_path_rxt}/registration-service`;
 export const registry_endpoint_key = "cEu9fbzxp3bnVWUS";
+export const codegen_endpoint = `${base_path_rxt}/codegen`;
 export const iasset_registry_endpoint = `${base_path_rxt}/registry-service`;
 export const indexing_service_endpoint = `${base_path_rxt}/index`;
 export const data_aggregation_endpoint = `${base_path}/data-aggregation`;

@@ -60,6 +60,7 @@ import { CollaborationService } from './catalogue/collaboration/collaboration.se
 import { UnshippedOrdersTransitionService } from './bpe/unshipped-order-transition-service';
 import { ValidationService } from './common/validation/validators';
 import { RegistryService } from "./registry/registry.service";
+import { TaskDesignService } from "./task-design/task-design.service";
 
 import {LoaderIAsset} from './animated-loader/loader_iasset';
 import {LoaderNimble} from './animated-loader/loader_nimble';
@@ -122,7 +123,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         CollaborationService,
         ValidationService,
         AgentService,
-        RegistryService
+        RegistryService,
+		TaskDesignService
     ],
     bootstrap: [
         AppComponent

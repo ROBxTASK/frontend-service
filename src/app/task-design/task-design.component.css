@@ -1,6 +1,6 @@
 #uploadBtn {
   position: absolute;
-  right: 6rem;
+  right: 6.5rem;
   top: 1rem;
   z-index: 1;
 }
@@ -8,6 +8,20 @@
 #downloadBtn {
   position: absolute;
   right: 2rem;
+  top: 1rem;
+  z-index: 1;
+}
+
+#generateROSBtn {
+  position: absolute;
+  right: 20.5rem;
+  top: 1rem;
+  z-index: 1;
+}
+
+#generateOPCUABtn {
+  position: absolute;
+  right: 11rem;
   top: 1rem;
   z-index: 1;
 }
