@@ -272,6 +272,21 @@ Blockly.Blocks['GetData'] = {
   }
 };
 
+Blockly.Blocks['GetDataReturn'] = {
+  init: function() {
+	this.appendValueInput("inputData")
+        .setCheck("String")
+        .appendField("GetData");
+    this.appendValueInput("Endpoint")
+        .setCheck("String")
+        .appendField("Endpoint");
+    this.setOutput(true, null);
+    this.setColour(280);
+ this.setTooltip("Get return data from a specified endpoint.");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['SetData'] = {
   init: function() {
 	this.appendValueInput("outputData")
