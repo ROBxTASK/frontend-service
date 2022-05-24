@@ -282,8 +282,12 @@
 </div>
 
 <div *ngIf="!minimalView" id="footer">
-    <img src="../assets/images/at_flag.png" alt=""> <span [innerHTML]="'funding-disclaimer' | translate"></span>
-    <div *ngIf="versions.length > 0">
+		<div class="row m-0">
+			<div class="col-2"><img class="footer-img" src="../assets/images/logo_ffg.png" alt=""></div>
+			<div class="col-8"><span [innerHTML]="'funding-disclaimer' | translate"></span></div>
+			<div class="col-2"><img class="footer-img" src="../assets/images/logo_bmk.png" alt=""></div>
+		</div>
+		<div *ngIf="versions.length > 0">
         <small>
             <span *ngFor="let version of versions; let i = index" [attr.data-index]="i">
                 <span><i *ngIf="i>0"> | </i>{{version.id}}: {{version.ver}}</span>
