@@ -29,9 +29,12 @@ export class DeviceSearch implements OnInit {
 
 	devices = [];
 	filtered_devices = [];
+	selectedDevicesNames = [];
+	selectedDevicesIDs = [];
 	search_running = true;
   own_devices = false;
 	query = "";
+	mode = "search";
 	comp_id;
 
     ngOnInit() {
@@ -41,6 +44,10 @@ export class DeviceSearch implements OnInit {
   				this.query = q;
           this.filterDevices();
         }
+				let m = params['mode'];
+				if (m) {
+					this.mode = m;
+				}
   		});
     }
 
@@ -55,6 +62,36 @@ export class DeviceSearch implements OnInit {
 
     }
 
+  getButtonClass(devID:any): string {
+		var cl = "btn mb-2 btn-primary";
+		if (this.selectedDevicesIDs.indexOf(devID) != -1)
+			cl = "btn mb-2 btn-danger";
+		return cl;
+	}
+
+	getButtonText(devID:any): string {
+		var cl = "Add device to selection";
+		if (this.selectedDevicesIDs.indexOf(devID) != -1)
+			cl = "Remove device from selection";
+		return cl;
+	}
+
+	toggleDevice(devID:any,devName:any): void {
+		var pos = this.selectedDevicesIDs.indexOf(devID);
+		if (pos == -1) {
+			this.selectedDevicesIDs.push(devID);
+			this.selectedDevicesNames.push(devName);
+		}
+		else {
+			this.selectedDevicesIDs.splice(pos,1);
+			this.selectedDevicesNames.splice(pos,1);
+		}
+	}
+
+	goToDesign() {
+		this.router.navigate(['task-design'], { queryParams: { mode: 'dynamic', ids: this.selectedDevicesIDs } });
+	}
+
 	getDevices() {
 		this.search_running = true;
 		this.registryService.getDevices()
@@ -65,7 +102,7 @@ export class DeviceSearch implements OnInit {
 			.catch(error => {
 				this.devices = [];
 				this.filtered_devices = [];
-        this.search_running = false;
+				this.search_running = false;
 			});
 	}
 

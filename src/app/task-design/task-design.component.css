@@ -12,6 +12,13 @@
   z-index: 1;
 }
 
+#addDevBtn {
+  position: absolute;
+  right: 2rem;
+  top: 5rem;
+  z-index: 1;
+}
+
 #generateROSBtn {
   position: absolute;
   right: 20.5rem;

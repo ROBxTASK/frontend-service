@@ -1,78 +1,32 @@
-<button id="uploadBtn" class="btn btn-lg btn-primary" (click)="uploadXML()"><i class="fa fa-upload"></i></button>
-<button id="downloadBtn" class="btn btn-lg btn-primary" (click)="downloadXML()"><i class="fa fa-download"></i></button>
-<button id="generateROSBtn" class="btn btn-lg btn-primary" (click)="triggerCodeGen('false')"><i class="fa fa-code"></i> ROS</button>
-<button id="generateOPCUABtn" class="btn btn-lg btn-primary" (click)="triggerCodeGen('true')"><i class="fa fa-code"></i> OPCUA</button>
-<div id="blocklyDiv" style="width: 100%; height: 80vh"></div>
-<xml id="toolbox" style="display:none">
-  <category name="Device Initialization" colour="0">
-    <block type="SetAsset"></block>
-	<block type="Text" editable="false">
-		<field name="text">chasi</field>
-	</block>
-	<block type="Text" editable="false">
-		<field name="text">camera</field>
-	</block>
-	<block type="Text" editable="false">
-		<field name="text">fitbit</field>
-	</block>
-	<block type="Text" editable="false">
-		<field name="text">panda</field>
-	</block>
-	<block type="Text" editable="false">
-		<field name="text">mir100</field>
-	</block>
-	<block type="Text" editable="false">
-		<field name="text">qbo</field>
-	</block>
-    <block type="Text" editable="false">
-		<field name="text">ur10cb3</field>
-	</block>
-	<block type="Text"></block>
-  </category>
-  <category name="Internal Communication" colour="40">
-    <block type="SendMessage"></block>
-    <block type="OnMessageReceive"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Moving" colour="80">
-    <block type="MoveToPosition"></block>
-    <block type="MoveToLocation"></block>
-    <block type="DeliverObject"></block>
-    <block type="FetchObject"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Detecting" colour="120">
-    <block type="MeasureHydration"></block>
-    <block type="DetectObject"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Grabbing and Unloading" colour="160">
-    <block type="GrabObject"></block>
-    <block type="PutObject"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Teaching" colour="200">
-    <block type="TeachingWorkspacePosition"></block>
-    <block type="TeachingObjectRecognition"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Basic Control Structures" colour="240">
-    <block type="Loop"></block>
-    <block type="Selection"></block>
-    <block type="WaitForCondition"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="Getting / Setting Data" colour="280">
-    <block type="GetData"></block>
-    <block type="GetDataReturn"></block>
-    <block type="SetData"></block>
-    <block type="WaitForExternalEvent"></block>
-	<block type="Text"></block>
-  </category>
-  <category name="User Input" colour="36" colour="320">
-    <block type="WaitForUserInput"></block>
-    <block type="VoiceOutput"></block>
-    <block type="GraphicalUserInteraction"></block>
-	<block type="Text"></block>
-  </category>
-</xml>
+<div class="row" *ngIf="mode=='select'">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        Dynamic mode
+      </div>
+      <div class="card-body">
+        <p class="card-text">Dynamic mode can be used to design tasks with previously registered devices</p>
+        <button class="btn btn-lg btn-primary" (click)="setMode('dynamic')">Start</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        Generic mode
+      </div>
+      <div class="card-body">
+        <p class="card-text">Generic mode can be used to design tasks with the full set of potentially supported skills</p>
+        <button class="btn btn-lg btn-primary" (click)="setMode('generic')">Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="mode!='select'">
+  <button *ngIf="mode=='dynamic'" id="addDevBtn" class="btn btn-lg btn-primary" (click)="addDevices()"><i class="fa fa-plus"></i> Add devices</button>
+  <button id="uploadBtn" class="btn btn-lg btn-primary" (click)="uploadXML()"><i class="fa fa-upload"></i></button>
+  <button id="downloadBtn" class="btn btn-lg btn-primary" (click)="downloadXML()"><i class="fa fa-download"></i></button>
+  <button id="generateROSBtn" class="btn btn-lg btn-primary" (click)="triggerCodeGen('false')"><i class="fa fa-code"></i> ROS</button>
+  <button id="generateOPCUABtn" class="btn btn-lg btn-primary" (click)="triggerCodeGen('true')"><i class="fa fa-code"></i> OPCUA</button>
+  <div id="blocklyDiv" style="width: 100%; height: 80vh"></div>
+</div>

@@ -22,6 +22,11 @@
 
 <button class="btn btn-primary mt-2 mb-2" (click)="toggleGrp()"><span *ngIf="own_devices">Show all devices</span><span *ngIf="!own_devices">Show own devices</span></button>
 
+<div *ngIf="mode=='select'" class="mt-2 mb-2">
+  Selected devices: {{selectedDevicesNames.toString()}}
+  <button class="btn btn-primary" [disabled]="selectedDevicesIDs.length==0" (click)="goToDesign()">Start Task Design</button>
+</div>
+
 <div *ngIf="search_running">
 	<img src="../../assets/images/form_loader.gif" />
 </div>
@@ -38,6 +43,7 @@
 			  <div class="card-body">
 					<div class="row">
 						<div class="col">
+              <button *ngIf="mode=='select'" [class]="getButtonClass(device.DeviceID)" (click)="toggleDevice(device.DeviceID,device.DeviceName)">{{getButtonText(device.DeviceID)}}</button>
 					    <h5 class="card-title">{{device.DeviceName}}</h5>
 					    <h6 class="card-subtitle mb-2 text-muted">{{device.DeviceID}}</h6>
 					    <p class="card-text">{{device.DeviceDescription}}</p>
