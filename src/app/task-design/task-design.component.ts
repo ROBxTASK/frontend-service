@@ -152,7 +152,7 @@ export class TaskDesignComponent implements OnInit {
             .appendField(new Blockly.FieldDropdown([["MQTT","MQTT"], ["ROS","ROS"]]), "messageType");
     	this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(0);
+        this.setColour("#333333");
      this.setTooltip("Send a MQTT or ROS message to another device.");
      this.setHelpUrl("");
       }
@@ -165,18 +165,18 @@ export class TaskDesignComponent implements OnInit {
     		.appendField(new Blockly.FieldDropdown([["MQTT","MQTT"], ["ROS","ROS"]]), "messageType");
     	this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(0);
+        this.setColour("#333333");
      this.setTooltip("React to a MQTT or ROS message by another device.");
      this.setHelpUrl("");
       }
     };
     var toolbox = '<xml>';
-    toolbox += '<category name="Internal Communication" colour="0">';
+    toolbox += '<category name="Internal Communication" colour="#333333">';
     toolbox += '<block type="SendMessage"></block>';
     toolbox += '<block type="OnMessageReceive"></block>';
     toolbox += '<block type="text"><field name="TEXT">Text</field></block>';
     toolbox += '</category>';
-    var col_mult = 280/(this.devices_filtered.length+1);
+    var col_mult = 320/(this.devices_filtered.length);
     for (var i=0; i<this.devices_filtered.length; i++) {
       var device = this.devices_filtered[i];
       var col = col_mult*(i+1);
@@ -185,9 +185,10 @@ export class TaskDesignComponent implements OnInit {
           this.initDynamicBlock(device,device.Skills[j],col);
           toolbox += '<block type="'+device.Skills[j].SkillName+'_-_'+device.DeviceID+'_-_DynamicBlock"></block>';
         }
+        toolbox += '<block type="text"><field name="TEXT">Text</field></block>';
       toolbox += '</category>';
     }
-    toolbox += '<category name="Basic Control Structures" colour="280">';
+    toolbox += '<category name="Basic Control Structures" colour="#555555">';
     toolbox += '<block type="controls_if"><mutation else="1"></mutation></block>';
     toolbox += '<block type="controls_repeat_ext"><value name="TIMES"><block type="math_number"><field name="NUM">10</field></block></value></block>';
     toolbox += '<block type="controls_whileUntil"></block>';
@@ -199,25 +200,49 @@ export class TaskDesignComponent implements OnInit {
     toolbox += '<block type="logic_boolean"></block>';
     toolbox += '<block type="text"><field name="TEXT">Text</field></block>';
     toolbox += '</category>';
-    toolbox += '<category name="Variables" custom="VARIABLE" colour="320"></category>';
+    toolbox += '<category name="Variables" custom="VARIABLE" colour="#777777"></category>';
     toolbox += '</xml>';
     if (Blockly.mainWorkspace)
       Blockly.mainWorkspace.dispose();
+    Blockly.Themes.Classic.blockStyles={colour_blocks:{colourPrimary:"#555555"},list_blocks:{colourPrimary:"#555555"},logic_blocks:{colourPrimary:"#555555"},loop_blocks:{colourPrimary:"#555555"},math_blocks:{colourPrimary:"#555555"},procedure_blocks:{colourPrimary:"#555555"},text_blocks:{colourPrimary:"#555555"},variable_blocks:{colourPrimary:"#777777"},variable_dynamic_blocks:{colourPrimary:"#777777"},hat_blocks:{colourPrimary:"#555555",hat:"cap"}};
     this.workspace = Blockly.inject('blocklyDiv', {
       toolbox: toolbox,
       scrollbars: false
     });
     this.workspace.addChangeListener(function(event){
       if (event.blockId && event.newParentId) {
-        var block1 = Blockly.mainWorkspace.getBlockById(event.blockId).type;
-        var block2 = Blockly.mainWorkspace.getBlockById(event.newParentId).type;
-        if (block1.indexOf('_-_DynamicBlock') != -1 && block2.indexOf('_-_DynamicBlock') != -1) {
-          var block1_id = block1.split("_-_")[1];
-          var block2_id = block2.split("_-_")[1];
-          if (block1_id != block2_id) {
-            alert("Warning!!!\nYou are trying to match blocks of different devices. This has a high chance of producing unusable code.\nUse the 'Internal Communication' blocks for exchanging information between devices.")
-          }
-        }
+        let xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+        let xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+        try {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(xmlText, "text/xml");
+            var blocks = xmlDoc.getElementsByTagName("block");
+            var wrong_setup = false;
+            for (var i=0; i<blocks.length; i++) {
+              var block = blocks[i];
+              if (block.parentNode.nodeName == "xml") {
+                var type = Blockly.mainWorkspace.getBlockById(block.id).type;
+                var device_id_root = "";
+                if (type.indexOf('_-_DynamicBlock') != -1)
+                  device_id_root = type.split("_-_")[1];
+                var dynamic = block.innerHTML.split('_-_DynamicBlock');
+                var other_id = "";
+                for (var j=0; j<dynamic.length; j++) {
+                  var dynamic_id = dynamic[j].split("_-_")[1];
+                  if (dynamic_id) {
+                    if (device_id_root != "" && dynamic_id != device_id_root)
+                      wrong_setup = true;
+                    else if (other_id == "")
+                      other_id = dynamic_id;
+                    else if (other_id != dynamic_id)
+                      wrong_setup = true;
+                  }
+                }
+              }
+            }
+            if (wrong_setup)
+              alert("Warning!!!\nYou are trying to match blocks of different devices. This has a high chance of producing unusable code.\nUse the 'Internal Communication' blocks for exchanging information between devices.")
+        } catch (e) {}
       }
     });
     if (this.xml != "") {
