@@ -26,17 +26,9 @@ export class TaskDesignService {
 
     constructor(private http: Http, private cookieService: CookieService) {}
 
-	private handleError(error: HttpErrorResponse): Promise<any> {
-		console.log(error);
-		return Promise.reject(error.message || error);
-	}
-
-	/*
     private handleError(error: any): Promise<any> {
-	  console.log(error,error.json().text(),error.json().text().valueOf(),error.json().text().toString(),error._body.text(),error._body.text().toString(),error._body.text()['<value>']);
       return Promise.reject(error.message || error);
     }
-	*/
 
 	generateCode(code:any,simulation:string): Promise<any> {
       const url = `${this.codegen_url}/${simulation}`;
