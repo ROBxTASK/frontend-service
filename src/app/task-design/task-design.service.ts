@@ -26,7 +26,7 @@ export class TaskDesignService {
     constructor(private http: Http, private cookieService: CookieService) {}
 
     private handleError(error: any): Promise<any> {
-	  console.log(error,error.message,error.error,error.json(),error.text(),error._body.text());
+	  console.log(error,error.json().text(),error.json().text().toString(),error._body.text(),error._body.text().toString(),error._body.text()['<value>']);
       return Promise.reject(error.message || error);
     }
 
