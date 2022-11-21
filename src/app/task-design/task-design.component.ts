@@ -123,7 +123,11 @@ export class TaskDesignComponent implements OnInit {
       document.body.removeChild(downloadLink);
     })
     .catch(error=>{
-      alert("Error generating code.")
+	  console.log(error);
+	  if (error.statusText && error.statusText!="")
+		  alert("Error generating code.\n"+error.statusText);
+	  else
+		  alert("Error generating code.")
     })
   }
 
