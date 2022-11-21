@@ -125,7 +125,7 @@ export class TaskDesignComponent implements OnInit {
     .catch(error=>{
 	  var fr = new FileReader();
 	  fr.onload = function(evt) {
-		var res = evt.target.result;
+		var res = evt['target']['result'];
 		console.log("onload",arguments, res, typeof res);
 	  };
 	  fr.readAsText(error._body);
