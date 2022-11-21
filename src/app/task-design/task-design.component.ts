@@ -124,7 +124,9 @@ export class TaskDesignComponent implements OnInit {
     })
     .catch(error=>{
 	  console.log(error);
-	  if (error.statusText && error.statusText!="")
+	  if (error.message && error.message != "")
+		  alert("Error generating code.\n"+error.message);
+	  else if (error.statusText && error.statusText!="")
 		  alert("Error generating code.\n"+error.statusText);
 	  else
 		  alert("Error generating code.")
