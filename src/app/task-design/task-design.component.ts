@@ -123,18 +123,17 @@ export class TaskDesignComponent implements OnInit {
       document.body.removeChild(downloadLink);
     })
     .catch(error=>{
-	  console.log(error,typeof(error),error._body,typeof(error._body));
-	  var fr = new FileReader();
-	  fr.onload = function(evt) {
-		var res = evt['target']['result'];
-		console.log("onload",arguments, res, typeof res);
-	  };
-	  fr.readAsText(error._body);
-	  //console.log(error,error.text(),error.json(),error.json().text(),error.json().text().toString(),error._body.text(),error._body.text().toString(),error._body.text()['<value>']);
-	  if (error.message && error.message != "")
-		  alert("Error generating code.\n"+error.message);
-	  else if (error.statusText && error.statusText!="")
-		  alert("Error generating code.\n"+error.statusText);
+	  if (error && error._body) {
+		  var fr = new FileReader();
+		  fr.onload = function(evt) {
+			var res = evt['target']['result'];
+			if (res && res != "")
+				alert("Error generating code.\n"+res);
+			else
+				alert("Error generating code.");
+		  };
+		  fr.readAsText(error._body);
+	  }
 	  else
 		  alert("Error generating code.")
     })
