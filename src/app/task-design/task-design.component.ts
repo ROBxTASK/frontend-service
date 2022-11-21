@@ -123,6 +123,7 @@ export class TaskDesignComponent implements OnInit {
       document.body.removeChild(downloadLink);
     })
     .catch(error=>{
+	  console.log(error,typeof(error),error._body,typeof(error._body));
 	  var fr = new FileReader();
 	  fr.onload = function(evt) {
 		var res = evt['target']['result'];
