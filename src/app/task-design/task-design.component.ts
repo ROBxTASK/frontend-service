@@ -128,7 +128,7 @@ export class TaskDesignComponent implements OnInit {
 		var res = evt.target.result;
 		console.log("onload",arguments, res, typeof res);
 	  };
-	  fr.readAsText(b);
+	  fr.readAsText(error._body);
 	  //console.log(error,error.text(),error.json(),error.json().text(),error.json().text().toString(),error._body.text(),error._body.text().toString(),error._body.text()['<value>']);
 	  if (error.message && error.message != "")
 		  alert("Error generating code.\n"+error.message);
