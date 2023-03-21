@@ -23,6 +23,7 @@ import { CookieService } from 'ng2-cookies';
 export class TaskDesignService {
 
     private codegen_url = myGlobals.codegen_endpoint;
+    private codegen_dynamic_url = myGlobals.codegen_dynamic_endpoint;
 
     constructor(private http: Http, private cookieService: CookieService) {}
 
@@ -30,8 +31,12 @@ export class TaskDesignService {
       return Promise.reject(error.message || error);
     }
 
-	generateCode(code:any,simulation:string): Promise<any> {
-      const url = `${this.codegen_url}/${simulation}`;
+	generateCode(code:any,mode:string,simulation:string): Promise<any> {
+      var url = '';
+      if (mode == 'generic')
+        url = `${this.codegen_url}/${simulation}`;
+      else
+        url = `${this.codegen_dynamic_url}/${simulation}`;
       const headers = new Headers({ 'Content-Type': 'application/json' });
       const options = {
         headers: new Headers({ 'Content-Type': 'application/json' }),

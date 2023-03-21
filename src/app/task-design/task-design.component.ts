@@ -103,7 +103,7 @@ export class TaskDesignComponent implements OnInit {
     let json = {
       "BlocklyWorkspace":xmlText
     }
-    this.taskDesignService.generateCode(json,simulation)
+    this.taskDesignService.generateCode(json,this.mode,simulation)
     .then(res=>{
       var filename = res.headers.get('content-disposition');
       if (filename)
